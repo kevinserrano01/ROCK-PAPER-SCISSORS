@@ -1,0 +1,39 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.cont-title{
+    background-color: #131313;
+    
+}
+#title1{
+    color: #e3d33b;
+    font-size: 35px;
+    font-family: 'Titan One', cursive;
+}
+
+.marcador{
+    margin-bottom: 15px;
+}
+
+.puntuacion{
+    color: white;
+}
+
+.message{
+    font-size: 20px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.score-container{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 400px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
