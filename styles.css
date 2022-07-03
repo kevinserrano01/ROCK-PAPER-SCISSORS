@@ -1,6 +1,14 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body{
     margin: 0;
     padding: 0;
+    margin-bottom: 100px;
+    background-color: #131313;
+    font-family: 'Roboto', sans-serif;
 }
 
 .cont-title{
@@ -8,17 +16,18 @@ body{
     
 }
 #title1{
-    color: #e3d33b;
-    font-size: 35px;
+    color: #34ff4f;
+    font-size: 45px;
     font-family: 'Titan One', cursive;
 }
 
-.marcador{
+#marcador{
     margin-bottom: 15px;
 }
 
 .puntuacion{
     color: white;
+    font-size: 32px;
 }
 
 .message{
@@ -37,3 +46,108 @@ body{
     margin: 0 auto;
 }
 
+.box{
+    width: 170px;
+}
+
+.score{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 30px;
+}
+
+.btn {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.btn-square {
+    width: 160px;
+    height: 160px;
+}
+.btn:hover {
+    background-color: #a9a9a9;
+}
+
+.perfil{
+    font-size: 80px;
+    margin-bottom: 10px;
+}
+
+.figura {
+    font-size: 80px;
+    margin-bottom: 10px;
+  }
+
+.textFooter{
+    font-size: 15px;
+    color: #f02f2f;
+}
+
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    font-size: 20px;
+}
+
+#footerKev{
+    border: 2px solid #ffffff;
+    border-radius: 40px;
+    padding: 10px;
+    background-color: #000000;
+    color: white;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+
+.bi-github{
+    color: #ffffff;
+    margin-left: 5px;
+}
+
+
+
+@media (max-width: 550px) {
+    .title {
+      font-size: 18px;
+    }
+  
+    .score-info {
+      font-size: 26px;
+    }
+  
+    #buttons {
+      gap: 10px;
+    }
+  
+    .btn-square {
+      width: 100px;
+      height: 100px;
+    }
+  
+    .figura {
+      font-size: 50px;
+    }
+  
+    .modal {
+      width: 95%;
+    }
+  }
