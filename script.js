@@ -1,21 +1,48 @@
-function computerPlayque(){
+let computerScore = 0;
+let playerScore = 0;
+let ganadorRonda = "";
 
-    console.log( Math.random());
-}
+function playRound(playerSelection, computerSelection){ //DECIDE GANADOR
+    if (playerSelection === computerSelection) {
+        ganadorRonda = 'Empate'
 
-function playRound(playerSelection, computerSelection){
-    console.log("you Lose! Paper beats Rock");
-}
+    } else if ((playerSelection === 'ROCK' && computerSelection === 'SCISSORS') ||
+            (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') ||
+            (playerSelection === 'PAPER' && computerSelection === 'ROCK'))
+        {
+            playerScore++;
+            ganadorRonda = 'You Win'
 
-let user = prompt("")
-
-const playerSelection = "rock";
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
-
-function game(){
-    for (let i=0; i<5; i++) {
-        console.log(playRound());
+    } else if ((computerSelection === 'ROCK' && playerSelection === 'SCISSORS') ||
+            (computerSelection === 'SCISSORS' && playerSelection === 'PAPER') ||
+            (computerSelection === 'PAPER' && playerSelection === 'ROCK'))
+        {
+            computerSelection++;
+            ganadorRonda = 'You lose!'
     }
-    
+    updateScoreMessage(ganadorRonda, playerSelection, computerSelection)
 }
+
+function getRandomChoice(){ //obtener seleccion aleatoria
+    let randomNum = Math.floor(Math.random() * 3);
+    switch (randomNum){
+        case 0:
+            return 'ROCK'
+        case 1:
+            return 'PAPER'
+        case 2:
+            return 'SCISSORS'
+    }
+}
+
+function gameOver(){
+    return playerScore === 5 || computerSelection === 5;
+}
+
+//consts
+const puntuaciacion = document.getElementById('puntuacion');
+const message = document.getElementById('message');
+const playerScore1 = document.getElementById('playerScore');
+const computerScore1 = document.getElementById('computerScore')
+const playerSign = document.getElementById('perfilPlayer')
+const computerSign = document.getElementById('perfilComputer')
