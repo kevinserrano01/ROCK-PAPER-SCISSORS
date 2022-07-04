@@ -33,13 +33,13 @@
             <div class="score-container">
 
                 <div class="box">
-                    <div id="perfilPlayer" class="perfil">?</div>
+                    <div id="perfilPlayer" class="perfil">❔</div>
                     <p id="playerScore" class="score">Player: 0</p>
                 </div>
 
                 <div class="box">
-                    <div id="perfilComputer" class="perfil">?</div>
-                    <p id="playerScore" class="score">Computer: 0</p>
+                    <div id="perfilComputer" class="perfil">❔</div>
+                    <p id="computerScore" class="score">Computer: 0</p>
                 </div>
 
             </div>
@@ -76,6 +76,13 @@
         </a>
             
     </footer>
+
+    <div class="modal" id="endgameModal">
+        <p class="modal-title" id="endgameMsg"></p>
+        <button class="btn btn-restart" id="restartBtn">Play again</button>
+    </div>
+      <div class="overlay" id="overlay"></div>
+
 
     <!-- js -->
     <script type="text/javascript" src="./script.js"></script>
