@@ -1,3 +1,49 @@
+let computerScore = 0
+let playerScore = 0
+let ganadorRonda = ''
+
+
+function playRound(playerSelection, computerSelection){ //DECIDE GANADOR
+    if (playerSelection === computerSelection) {
+        ganadorRonda = 'tie'
+    }
+
+    if (
+        (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') ||
+        (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') ||
+        (playerSelection === 'PAPER' && computerSelection === 'ROCK')
+      ) {
+        playerScore++
+        ganadorRonda = 'player'
+      }
+
+    if (
+    (computerSelection === 'ROCK' && playerSelection === 'SCISSORS') ||
+    (computerSelection === 'SCISSORS' && playerSelection === 'PAPER') ||
+    (computerSelection === 'PAPER' && playerSelection === 'ROCK')
+    ) {
+    computerScore++
+    ganadorRonda = 'computer'
+    }
+    updateScoreMessage(ganadorRonda, playerSelection, computerSelection)
+}
+
+function getRandomChoice(){ //obtener seleccion aleatoria
+    let randomNum = Math.floor(Math.random() * 3); //probar otra menera !!
+    switch (randomNum){
+        case 0:
+            return 'ROCK'
+        case 1:
+            return 'PAPER'
+        case 2:
+            return 'SCISSORS'
+    }
+}
+
+function gameOver(){ //el juego termina cuando se llega a los 5 puntos.
+    return playerScore === 5 || computerScore === 5
+}
+
 const puntuacion = document.getElementById('puntuacion');
 const message = document.getElementById('message');
 const playerScore1 = document.getElementById('playerScore');
@@ -16,55 +62,9 @@ const restartBtn = document.getElementById('restartBtn') //button restart
 //events
 btnPiedra.addEventListener('click', () => makeClick('ROCK'))
 btnPapel.addEventListener('click', () => makeClick('PAPER'))
-btnTijera.addEventListener('click', () => makeClick('TIJERA'))
+btnTijera.addEventListener('click', () => makeClick('SCISSORS'))
 restartBtn.addEventListener('click', restartGame)
 overlay.addEventListener('click', closeEndgameModal)
-
-let computerScore = 0
-let playerScore = 0
-let ganadorRonda = ''
-
-
-function playRound(playerSelection, computerSelection){ //DECIDE GANADOR
-    if (playerSelection === computerSelection) {
-        ganadorRonda = 'empate'
-    }
-
-    if (
-        (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') ||
-        (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') ||
-        (playerSelection === 'PAPER' && computerSelection === 'ROCK')
-      ) {
-        playerScore++
-        ganadorRonda = 'player'
-      }
-
-      if (
-        (computerSelection === 'ROCK' && playerSelection === 'SCISSORS') ||
-        (computerSelection === 'SCISSORS' && playerSelection === 'PAPER') ||
-        (computerSelection === 'PAPER' && playerSelection === 'ROCK')
-      ) {
-        computerScore++
-        ganadorRonda = 'computer'
-      }
-        updateScoreMessage(ganadorRonda, playerSelection, computerSelection)
-}
-
-function getRandomChoice(){ //obtener seleccion aleatoria
-    let randomNum = Math.floor(Math.random() * 3); //probar otra menera !!
-    switch (randomNum){
-        case 0:
-            return 'ROCK'
-        case 1:
-            return 'PAPER'
-        case 2:
-            return 'SCISSORS'
-    }
-}
-
-function gameOver(){ //el juego termina cuando se llega a los 5 puntos.
-    return playerScore === 5 || computerScore === 5
-}
 
 function makeClick(playerSelection){ //hacer Click - handleClick
     if (gameOver()) {
@@ -109,7 +109,7 @@ function updateChoices(playerSelection, computerSelection){ //actualizacion de o
 }
 
 function updateScore(){ //actualizar puntuacion
-    if (ganadorRonda === 'empate') {
+    if (ganadorRonda === 'tie') {
         puntuacion.textContent = "It's a tie!"
     } else if (ganadorRonda === 'player'){
         puntuacion.textContent = "You won!"
@@ -121,7 +121,7 @@ function updateScore(){ //actualizar puntuacion
     computerScore1.textContent = `Computer: ${computerScore}`
 }
 
-function updateScoreMessage(ganador, playerSelection, computerSelection){ //Actualizar Puntuación Mensaje
+function updateScoreMessage(ganador, playerSelection, computerSelection){ //Muestra los ultimos objetos seleccionados de la ronda y con la primera en mayuscula
     if (ganador === 'player') {
         message.textContent = `${capitalizeFirstLetter(playerSelection)} beats ${computerSelection.toLowerCase()}`
         return
@@ -134,7 +134,7 @@ function updateScoreMessage(ganador, playerSelection, computerSelection){ //Actu
     message.textContent = `${capitalizeFirstLetter(playerSelection)} ties with ${computerSelection.toLowerCase()}`
 }
 
-function capitalizeFirstLetter(string){ //mayúscula Primera Letra
+function capitalizeFirstLetter(string){ //recibe un arma para ponerla en mayúscula la primera Letra
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase()
 }
 
@@ -149,9 +149,9 @@ function closeEndgameModal(){
 }
 
 function setFinalMessage() {
-    return playerScore > computerScore
-      ? (endgameMsg.textContent = 'You won!')
-      : (endgameMsg.textContent = 'You lost...')
+    return playerScore > computerScore 
+        ? (endgameMsg.textContent = 'You won!')
+        : (endgameMsg.textContent = 'You lost...')
 }
 
 function restartGame(){

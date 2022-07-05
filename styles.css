@@ -3,12 +3,35 @@ html {
     min-height: 100%;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body{
     margin: 0;
     padding: 0;
     margin-bottom: 100px;
     background-color: #131313;
     font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+}
+
+button {
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    outline: none;
 }
 
 .cont-title{
@@ -78,6 +101,10 @@ body{
     background-color: #a9a9a9;
 }
 
+.btn:active {
+    background-color: #5b5f68;
+  }
+
 .perfil{
     font-size: 80px;
     margin-bottom: 10px;
@@ -134,7 +161,7 @@ body{
     width: 300px;
     padding: 30px;
     border-radius: 10px;
-    background-color: #34ff4f;
+    background-color: #222831;
     text-align: center;
     font-size: 30px;
     user-select: none;
@@ -178,7 +205,7 @@ body{
       font-size: 18px;
     }
   
-    .score-info {
+    .puntuacion {
       font-size: 26px;
     }
   
